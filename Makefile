@@ -1,4 +1,4 @@
-.PHONY: ninja-with-cmake ninja test build-dir clean clean-build
+.PHONY: ninja-with-cmake ninja test build-dir clean clean-build lint watch
 ninja-with-cmake: build-dir
 	cd build && cmake -G Ninja -DVISUALISATION=ON ..
 	cd build && ninja
@@ -12,6 +12,12 @@ clean-build: clean
 	make ninja-with-cmake
 clean:
 	rm -rf build
+lint:
+	cd build && ninja lint_socix lint_socix_test
+watch:
+	while true; do inotifywait -e modify ./src/*; make test; done
 #prod-ninja: build-dir
 #	cd build && cmake -G Ninja -DRELEASE_TYPE=??? -DVISUALISATION=OFF -DNO_TEST=ON ..
 #	cd build && ninja
+# Using `-DCMAKE_BUILD_TYPE=`, `Debug` or `Profile` build configurations can be
+# generated.
