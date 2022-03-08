@@ -10,6 +10,11 @@ All dependencies to FLAME GPU 2
 FLAMEGPU2 is downloaded via CMake and configured as a dependency of the
 project.
 
+## Repo Overview
+- `./cmake`: cmake build files
+- `./src`: model source code
+- `./ana`: analysis code
+
 ## Building
 ### Linux
 ```bash

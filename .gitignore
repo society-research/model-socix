@@ -500,5 +500,12 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# ctags
 tags
+
+# vim session files
 *.vim
+
+# temporary files
+/tmp*

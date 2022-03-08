@@ -22,6 +22,6 @@ if(NOT NO_TEST)
     ${CMAKE_CURRENT_LIST_DIR}/main_lib.cu
   )
   add_flamegpu_executable("${PROJECT_NAME}" "${test_src}" "${FLAMEGPU_ROOT}" "${PROJECT_BINARY_DIR}" TRUE)
-  target_link_libraries("${PROJECT_NAME}" gtest_main)
+  target_link_libraries("${PROJECT_NAME}" PRIVATE gtest_main)
   add_compile_options(-O1 -g -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls)
 endif()
