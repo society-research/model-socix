@@ -20,6 +20,7 @@ if(NOT NO_TEST)
   set(test_src
     ${CMAKE_CURRENT_LIST_DIR}/main_test.cu
     ${CMAKE_CURRENT_LIST_DIR}/main_lib.cu
+    ${CMAKE_CURRENT_LIST_DIR}/main_lib_test.cu
   )
   add_flamegpu_executable("${PROJECT_NAME}" "${test_src}" "${FLAMEGPU_ROOT}" "${PROJECT_BINARY_DIR}" TRUE)
   target_link_libraries("${PROJECT_NAME}" PRIVATE gtest_main)
