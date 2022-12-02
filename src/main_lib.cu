@@ -8,7 +8,7 @@ FLAMEGPU_AGENT_FUNCTION(CollectResource, flamegpu::MessageNone, flamegpu::Messag
 }
 
 void AddHuman(flamegpu::ModelDescription& model) {
-  flamegpu::AgentDescription& human = model.newAgent("human");
+  flamegpu::AgentDescription human = model.newAgent("human");
   // Resources
   human.newVariable<int, ResourceAmount>("resources", DefaultResources);
   // System
@@ -18,5 +18,5 @@ void AddHuman(flamegpu::ModelDescription& model) {
   // TODO Mental well-being
 
   // behavior
-  flamegpu::AgentFunctionDescription& dscCollectResource = human.newFunction("CollectResource", CollectResource);
+  flamegpu::AgentFunctionDescription dscCollectResource = human.newFunction("CollectResource", CollectResource);
 }

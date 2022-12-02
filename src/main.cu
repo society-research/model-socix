@@ -2,6 +2,6 @@
 
 int main(int argc, const char ** argv) {
   flamegpu::ModelDescription model("socix");
-  flamegpu::EnvironmentDescription env;
+  //flamegpu::EnvironmentDescription env("env");
   AddHuman(model);
 }

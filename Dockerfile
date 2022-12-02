@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.4.3-devel-ubuntu20.04
+FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -yq ninja-build curl inotify-tools git wget
 RUN apt-get update && apt-get install -yq python3 python3-pip doxygen libopengl-dev
