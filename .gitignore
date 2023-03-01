@@ -509,3 +509,4 @@ tags
 
 # temporary files
 /tmp*
+.env
