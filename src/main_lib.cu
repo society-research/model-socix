@@ -12,10 +12,8 @@ void AddHuman(flamegpu::ModelDescription &model) {
   // Resources
   human.newVariable<int, ResourceAmount>("resources", DefaultResources);
   // System
-  human.newState("market"); // should these be a bool variable "system" instead?
-  human.newState("socix");
-  // TODO Physiological well-being
-  // TODO Mental well-being
+  //human.newState("market"); // should these be a bool variable "system" instead?
+  //human.newState("socix");
 
   // behavior
   flamegpu::AgentFunctionDescription dscCollectResource =
