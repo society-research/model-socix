@@ -1,5 +1,4 @@
-#include "gtest/gtest.h"
 #include "main_lib.cuh"
+#include "gtest/gtest.h"
 
-TEST(socix, main) {
-}
+TEST(socix, main) {}

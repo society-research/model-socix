@@ -15,5 +15,4 @@ enum class System {
 
 void AddHuman(flamegpu::ModelDescription &model);
 
-flamegpu::EnvironmentDescription
-CreateEnvironment(flamegpu::ModelDescription &model);
+flamegpu::EnvironmentDescription CreateEnvironment(flamegpu::ModelDescription &model);
