@@ -2,6 +2,9 @@
 
 int main(int argc, const char ** argv) {
   flamegpu::ModelDescription model("socix");
-  //flamegpu::EnvironmentDescription env("env");
+  auto env = CreateEnvironment(model);
   AddHuman(model);
+  // create model runner
+  flamegpu::CUDASimulation cudaSimulation(model);
+  cudaSimulation.initialise(argc, argv);
 }

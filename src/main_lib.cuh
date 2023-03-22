@@ -13,4 +13,7 @@ enum class System {
 
 // essa2021: 1 cell = 1 m^2
 
-void AddHuman(flamegpu::ModelDescription& model);
+void AddHuman(flamegpu::ModelDescription &model);
+
+flamegpu::EnvironmentDescription
+CreateEnvironment(flamegpu::ModelDescription &model);

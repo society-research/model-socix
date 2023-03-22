@@ -20,3 +20,14 @@ void AddHuman(flamegpu::ModelDescription& model) {
   // behavior
   flamegpu::AgentFunctionDescription dscCollectResource = human.newFunction("CollectResource", CollectResource);
 }
+
+
+flamegpu::EnvironmentDescription CreateEnvironment(flamegpu::ModelDescription& model) {
+  flamegpu::EnvironmentDescription env = model.Environment();
+  // Population size to generate, if no agents are loaded from disk
+  env.newProperty("POPULATION_TO_GENERATE", 5000u);
+  // Environment bounds
+  //env.newProperty("MIN_POSITION", -0.5f);
+  //env.newProperty("MAX_POSITION", +0.5f);
+  return env;
+}

@@ -3,7 +3,7 @@ services:
   cuda:
     build: .
     working_dir: /src
-    command: ["make", "test"]
+    command: ["make", "watch"]
     user: "${UID}:${GID}"
     deploy:
       resources:
