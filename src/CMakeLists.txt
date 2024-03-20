@@ -10,7 +10,7 @@ set(main_src
   ${CMAKE_CURRENT_LIST_DIR}/main.cu
   ${CMAKE_CURRENT_LIST_DIR}/main_lib.cu
 )
-add_flamegpu_executable("${PROJECT_NAME}" "${main_src}" "${FLAMEGPU_ROOT}" "${PROJECT_BINARY_DIR}" TRUE)
+flamegpu_add_executable("${PROJECT_NAME}" "${main_src}" "${FLAMEGPU_ROOT}" "${PROJECT_BINARY_DIR}" TRUE)
 target_include_directories("${PROJECT_NAME}" PRIVATE ".")
 
 if(NOT NO_TEST)
@@ -22,7 +22,7 @@ if(NOT NO_TEST)
     ${CMAKE_CURRENT_LIST_DIR}/main_lib.cu
     ${CMAKE_CURRENT_LIST_DIR}/main_lib_test.cu
   )
-  add_flamegpu_executable("${PROJECT_NAME}" "${test_src}" "${FLAMEGPU_ROOT}" "${PROJECT_BINARY_DIR}" TRUE)
+  flamegpu_add_executable("${PROJECT_NAME}" "${test_src}" "${FLAMEGPU_ROOT}" "${PROJECT_BINARY_DIR}" TRUE)
   target_link_libraries("${PROJECT_NAME}" PRIVATE gtest_main)
   add_compile_options(-O1 -g -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls)
 endif()
