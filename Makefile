@@ -8,7 +8,7 @@ ninja:
 .PHONY: ninja
 
 test: ninja
-	./build/src/bin/Release/socix_test
+	./build/src/bin/Release/socix_test --gtest_color=yes
 .PHONY: test
 
 build-dir:
@@ -28,6 +28,7 @@ lint:
 .PHONY: lint
 
 watch:
+	make ninja-with-cmake
 	while true; do inotifywait -e modify ./src/*; make test; done
 .PHONY: watch
 
