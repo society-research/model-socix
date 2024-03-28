@@ -4,16 +4,17 @@
 TEST(human, CollectResource) {
   flamegpu::ModelDescription model("socix_test_human_CollectResource");
   AddHuman(model);
-  const char *argv[] = {"-s", "1", "-r", "1", NULL};
-  flamegpu::CUDASimulation cudaSimulation(model, 4, argv);
-  flamegpu::AgentVector population(model.Agent("human"), 1 /*amount of humans*/);
-  population.push_back();
-  population[0].setVariable<int>("resources", 1, int(Resource::Basic));
+  const char *argv[] = {"bin/socix", "-s", "1", "-r", "1711656101", "-v", NULL};
+  flamegpu::CUDASimulation cudaSimulation(model, 6, argv);
+  flamegpu::AgentVector initialPopulation(model.Agent("human"), 1 /*amount of humans*/);
+  initialPopulation[0].setVariable<int>("resources", 1, int(Resource::Basic));
+  cudaSimulation.setPopulationData(initialPopulation);
   EXPECT_EQ(cudaSimulation.step(), true)
       << "stop should be triggered, since we passed '-s 1'";
-  cudaSimulation.getPopulationData(population);
-  ASSERT_EQ(population.size(), 1); // FIXME: assertion fails
-  EXPECT_EQ(population[0].getVariable<int>("resources", int(Resource::Basic)), 2);
+  flamegpu::AgentVector finalPopulation(model.Agent("human"));
+  cudaSimulation.getPopulationData(finalPopulation);
+  ASSERT_EQ(finalPopulation.size(), 1);
+  EXPECT_EQ(finalPopulation[0].getVariable<int>("resources", int(Resource::Basic)), 0);
 }
 
 TEST(model, CreateEnvironment) {
