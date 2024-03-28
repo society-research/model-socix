@@ -3,7 +3,7 @@
 FLAMEGPU_AGENT_FUNCTION(CollectResource, flamegpu::MessageNone, flamegpu::MessageNone) {
   int r = FLAMEGPU->getVariable<int, ResourceAmount>("resources", int(Resource::Basic));
   r++; // TODO pass message with nearby resource actor
-  FLAMEGPU->setVariable<int, ResourceAmount>("resources", r, int(Resource::Basic));
+  FLAMEGPU->setVariable<int, ResourceAmount>("resources", 12, int(Resource::Basic));
   return flamegpu::ALIVE;
 }
 
