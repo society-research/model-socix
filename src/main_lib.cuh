@@ -1,6 +1,7 @@
 #include "flamegpu/flamegpu.h"
 
-constexpr uint64_t ResourceAmount = 10; // slots defined by Resource enum
+__device__ constexpr const char HumanVarResources[] = "resources";
+constexpr uint64_t ResourceAmount = 1; // slots defined by Resource enum
 const std::array<int, ResourceAmount> DefaultResources = {0};
 enum class Resource {
   Basic = 0,

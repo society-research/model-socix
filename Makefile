@@ -1,5 +1,5 @@
 ninja-with-cmake: build-dir
-	cd build && cmake -G Ninja -DVISUALISATION=ON ..
+	cd build && cmake -G Ninja -DFLAMEGPU_VISUALISATION=ON ..
 	cd build && ninja
 .PHONY: ninja-with-cmake
 
@@ -41,10 +41,10 @@ compose-up-rebuild:
 .PHONY: compose-up-rebuild
 
 format:
-	clang-format -i $$(fd '(.cu|.cuh)$$' src/)
+	clang-format -i $$(fd '(\.cu|\.cuh)$$' src/)
 .PHONY: format
 #prod-ninja: build-dir
-#	cd build && cmake -G Ninja -DRELEASE_TYPE=??? -DVISUALISATION=OFF -DNO_TEST=ON ..
+#	cd build && cmake -G Ninja -DRELEASE_TYPE=??? -DFLAMEGPU_VISUALISATION=OFF -DNO_TEST=ON ..
 #	cd build && ninja
 # Using `-DCMAKE_BUILD_TYPE=`, `Debug` or `Profile` build configurations can be
 # generated.

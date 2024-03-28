@@ -1,19 +1,21 @@
 #include "main_lib.cuh"
 
 FLAMEGPU_AGENT_FUNCTION(CollectResource, flamegpu::MessageNone, flamegpu::MessageNone) {
-  int r = FLAMEGPU->getVariable<int, ResourceAmount>("resources", int(Resource::Basic));
-  r++; // TODO pass message with nearby resource actor
-  FLAMEGPU->setVariable<int, ResourceAmount>("resources", 12, int(Resource::Basic));
+  int food =
+      FLAMEGPU->getVariable<int, ResourceAmount>(HumanVarResources, int(Resource::Basic));
+  food--; // consume
+  FLAMEGPU->setVariable<int, ResourceAmount>(HumanVarResources, int(Resource::Basic),
+                                             food);
   return flamegpu::ALIVE;
 }
 
 void AddHuman(flamegpu::ModelDescription &model) {
   flamegpu::AgentDescription human = model.newAgent("human");
   // Resources
-  human.newVariable<int, ResourceAmount>("resources", DefaultResources);
+  human.newVariable<int, ResourceAmount>(HumanVarResources, DefaultResources);
   // System
-  //human.newState("market"); // should these be a bool variable "system" instead?
-  //human.newState("socix");
+  // human.newState("market"); // should these be a bool variable "system" instead?
+  // human.newState("socix");
 
   // behavior
   flamegpu::AgentFunctionDescription dscCollectResource =
