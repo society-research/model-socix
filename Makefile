@@ -1,5 +1,6 @@
-ninja-with-cmake: build-dir
-	cd build && cmake -G Ninja -DFLAMEGPU_VISUALISATION=ON ..
+ninja-with-cmake:
+	#rm -rf build && mkdir build
+	cd build && cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -DFLAMEGPU_VISUALISATION=ON -DFLAMEGPU_SHARE_USAGE_STATISTICS=OFF -DFLAMEGPU_TELEMETRY_SUPPRESS_NOTICE=ON ..
 	cd build && ninja
 .PHONY: ninja-with-cmake
 
@@ -8,12 +9,9 @@ ninja:
 .PHONY: ninja
 
 test: ninja
-	./build/src/bin/Release/socix_test --gtest_color=yes
+	#./build/src/bin/Release/socix_test --gtest_color=yes
+	./build/src/bin/Debug/socix_test --gtest_color=yes
 .PHONY: test
-
-build-dir:
-	mkdir -p build
-.PHONY: build-dir
 
 clean-build: clean
 	make ninja-with-cmake
@@ -43,7 +41,7 @@ compose-up-rebuild:
 format:
 	clang-format -i $$(fd '(\.cu|\.cuh)$$' src/)
 .PHONY: format
-#prod-ninja: build-dir
+#prod-ninja:
 #	cd build && cmake -G Ninja -DRELEASE_TYPE=??? -DFLAMEGPU_VISUALISATION=OFF -DNO_TEST=ON ..
 #	cd build && ninja
 # Using `-DCMAKE_BUILD_TYPE=`, `Debug` or `Profile` build configurations can be

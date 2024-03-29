@@ -1,6 +1,6 @@
 project(socix CUDA CXX)
 option(VISUALISATION "Enable visualisation support" OFF)
-set(FLAMEGPU_VERSION "master" CACHE STRING "Git branch or tag to use")
+set(FLAMEGPU_VERSION "v2.0.0-rc.1" CACHE STRING "Git branch or tag to use")
 set(FLAMEGPU_SHARE_USAGE_STATISTICS OFF)
 include(flamegpu2)
 include(${FLAMEGPU_ROOT}/cmake/common.cmake)

@@ -1,18 +1,16 @@
 #include "main_lib.cuh"
 
 FLAMEGPU_AGENT_FUNCTION(CollectResource, flamegpu::MessageNone, flamegpu::MessageNone) {
-  int food =
-      FLAMEGPU->getVariable<int, ResourceAmount>(HumanVarResources, int(Resource::Basic));
+  int food = FLAMEGPU->getVariable<int>(VAR_HUMAN_RESOURCES);
   food--; // consume
-  FLAMEGPU->setVariable<int, ResourceAmount>(HumanVarResources, int(Resource::Basic),
-                                             food);
+  FLAMEGPU->setVariable<int>(VAR_HUMAN_RESOURCES, food);
   return flamegpu::ALIVE;
 }
 
 void AddHuman(flamegpu::ModelDescription &model) {
   flamegpu::AgentDescription human = model.newAgent("human");
   // Resources
-  human.newVariable<int, ResourceAmount>(HumanVarResources, DefaultResources);
+  human.newVariable<int>(VAR_HUMAN_RESOURCES, 0);
   // System
   // human.newState("market"); // should these be a bool variable "system" instead?
   // human.newState("socix");
@@ -20,6 +18,7 @@ void AddHuman(flamegpu::ModelDescription &model) {
   // behavior
   flamegpu::AgentFunctionDescription dscCollectResource =
       human.newFunction("CollectResource", CollectResource);
+  model.addExecutionRoot(dscCollectResource);
 }
 
 flamegpu::EnvironmentDescription CreateEnvironment(flamegpu::ModelDescription &model) {
