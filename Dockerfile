@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
+FROM nvidia/cuda:12.2.0-devel-ubuntu22.04
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -yq ninja-build curl inotify-tools git wget python3 python3-pip doxygen libopengl-dev libglx-dev libgl1-mesa-dev libglew-dev libsdl2-dev libfontconfig1-dev libdevil-dev 
 RUN python3 -m pip install cpplint

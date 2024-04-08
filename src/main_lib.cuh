@@ -7,7 +7,7 @@ enum class System {
   Socix = 1,
 };
 
-// essa2021: 1 cell = 1 m^2
+// essa2021: 1 cell = 10 m^2
 
 void AddHuman(flamegpu::ModelDescription &model);
 
