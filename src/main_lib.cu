@@ -18,7 +18,7 @@ void AddHuman(flamegpu::ModelDescription &model) {
   // behavior
   flamegpu::AgentFunctionDescription dscCollectResource =
       human.newFunction("CollectResource", CollectResource);
-  model.addExecutionRoot(dscCollectResource);
+  model.newLayer().addAgentFunction(dscCollectResource);
 }
 
 flamegpu::EnvironmentDescription CreateEnvironment(flamegpu::ModelDescription &model) {

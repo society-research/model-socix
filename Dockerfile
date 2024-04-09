@@ -7,5 +7,6 @@ RUN python3 -m pip install cpplint
 RUN wget -O /tmp/cmake.sh "https://cmake.org/files/v3.18/cmake-3.18.0-Linux-x86_64.sh"
 RUN chmod +x /tmp/cmake.sh
 RUN echo -ne "y\ny\nn\n" | /tmp/cmake.sh --prefix=/usr/local
+RUN git config --global --add safe.directory /src
 # not needed, since cuda-gdb exists:
 #RUN apt-get update && apt-get install -yq gdb lldb
